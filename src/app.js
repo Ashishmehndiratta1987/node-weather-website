@@ -59,7 +59,7 @@ app.get('/weather', (req, res)=>{
                 error: error
             })
         }else{
-            forecast.weatherInfo(latitude, longitude, (error, { temperature, feelslike} = {})=>{
+            forecast.weatherInfo(latitude, longitude, (error, { temperature, feelslike, humidity} = {})=>{
                 if(error){
                     res.send({
                         error: error
@@ -67,7 +67,7 @@ app.get('/weather', (req, res)=>{
                 }else{
                     res.send({
                         location: place,
-                        forecast: 'Real temperature is ' + temperature + ' but it feel like ' +  feelslike,
+                        forecast: 'Real temperature is ' + temperature + ' but it feel like ' +  feelslike + ' with humidity of ' + humidity + '%',
                         address: req.query.address
 
                     })
